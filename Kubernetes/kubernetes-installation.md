@@ -1,6 +1,6 @@
 # Setup kubernetes on Production
 
-## configure AWS EKS Cluster through CLI : Step-by-Step Setup Using EC2 Instance
+## Configure AWS EKS Cluster through CLI : Step-by-Step Setup Using EC2 Instance
 
 ## Prerequities:
    - Create IAM role
