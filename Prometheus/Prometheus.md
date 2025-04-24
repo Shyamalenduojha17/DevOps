@@ -39,6 +39,8 @@ Prometheus consists of multiple components that work together to provide metrics
    - Exposes metrics via a built-in web interface.
    - Often used in conjunction with Grafana for advanced visualization and dashboarding.
 
+![Prometheus Architecture](images/prometheus-architecture.gif)
+
 ---
 
 ### **How Prometheus Works Internally**
