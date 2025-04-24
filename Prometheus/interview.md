@@ -13,6 +13,7 @@
 ---
 
 🔹 Intermediate to Advanced (Scenario-Based)
+
 11.	You notice that Prometheus is missing metrics from some services. How would you troubleshoot the issue?
 12.	You need to monitor custom business metrics from your application. How would you expose these metrics to Prometheus?
 13.	Prometheus is consuming too much memory over time. How would you investigate and optimize it?
