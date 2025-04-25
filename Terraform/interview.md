@@ -108,7 +108,6 @@
     - Then assign resources to appropriate provider using `provider = aws.us_west`, etc.
 
 21. **You are using Terraform in a CI/CD pipeline, and the build fails due to a **locking error** on the state file. How do you resolve this issue?**
-    Sure! Here’s the answer:
 
 ✅ **Answer:**
 
