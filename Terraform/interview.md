@@ -107,4 +107,41 @@
       ```  
     - Then assign resources to appropriate provider using `provider = aws.us_west`, etc.
 
+21. **You are using Terraform in a CI/CD pipeline, and the build fails due to a **locking error** on the state file. How do you resolve this issue?**
+    Sure! Here’s the answer:
+
+✅ **Answer:**
+
+When Terraform encounters a **locking error** on the state file in a CI/CD pipeline, it means that another Terraform operation is currently modifying the state, and the current operation is being blocked to prevent state corruption.
+
+Here’s how you can resolve it:
+
+1. **Ensure Proper Locking**:  
+   - Terraform’s remote backends (like **S3 + DynamoDB** or **Terraform Cloud**) support state locking. Ensure **state locking** is enabled, which prevents multiple Terraform processes from modifying the state at the same time.
+
+2. **Manual Unlock**:  
+   - If you're sure no other processes are using the state, you can manually **unlock** the state file using the following command:
+     ```bash
+     terraform force-unlock LOCK_ID
+     ```
+     - **LOCK_ID** is the ID that Terraform provides when it encounters a lock. You can find it in the error message.
+
+3. **Verify Running Processes**:  
+   - Make sure no other Terraform processes are running. You can check for Terraform processes using:
+     ```bash
+     ps aux | grep terraform
+     ```
+   - If a process is running, it could be applying or planning changes, which can cause the locking issue.
+
+4. **Pipeline Configuration**:
+   - **Ensure proper concurrency** settings in the CI/CD pipeline to prevent multiple Terraform commands (apply, plan) from running simultaneously.
+   - Use **lock file** or a similar mechanism to prevent concurrency issues in the pipeline.
+
+5. **State File in Remote Backend**:  
+   - If you're using a remote backend like **S3** with **DynamoDB** for state locking, ensure that your DynamoDB table is configured to handle concurrency correctly (i.e., it’s set up with proper **consistency**).
+
+6. **Terraform Cloud/Enterprise**:
+   - If you're using **Terraform Cloud** or **Enterprise**, it automatically manages locking for you, but if it fails, retrying the pipeline might resolve transient issues.
+
+
 ---
